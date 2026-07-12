@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wan Mahadi - Links</title>
+    <!-- This loads the social media icons dynamically -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,8 +18,9 @@
         }
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
+            padding: 20px;
         }
         /* Profile Image */
         .profile-img {
@@ -25,33 +28,54 @@
             height: 120px;
             border-radius: 50%;
             background-color: #ddd;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .profile-img img { width: 100%; height: 100%; object-fit: cover; }
         
-        h1 { font-size: 1.5rem; margin-bottom: 5px; color: #111; }
-        p { color: #666; margin-bottom: 30px; font-size: 1rem; }
-
-        /* Buttons */
-        .links a {
-            display: block;
-            background: white;
-            color: #333;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid #ddd;
-            transition: transform 0.2s, background 0.2s;
+        /* Typography styled to match your example image */
+        h1 { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            margin-bottom: 8px; 
+            color: #111; 
+            letter-spacing: -0.5px;
         }
-        .links a:hover {
-            transform: scale(1.02);
-            background: #f0f0f0;
+        p { 
+            color: #e51a23; /* Matching the red color from your screenshot */
+            margin-bottom: 30px; 
+            font-size: 1.05rem; 
+            font-weight: 600; 
+        }
+
+        /* Horizontal Social Icon Row */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 14px; /* Space between the circles */
+        }
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background-color: #f0f2f5; /* Light gray circle background */
+            color: #1b1f23; /* Icon color */
+            border-radius: 50%; /* Makes it a perfect circle */
+            text-decoration: none;
+            font-size: 1.3rem; /* Icon size */
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        
+        /* Subtle pop effect when hovering over the icons */
+        .social-icons a:hover {
+            transform: scale(1.08);
+            background-color: #e4e6eb;
         }
     </style>
 </head>
@@ -65,11 +89,20 @@
         <h1>Wan Mahadi Wan Omar</h1>
         <p>Full-time PruBSN Takaful Consultant</p>
 
-        <div class="links">
-            <a href="https://www.instagram.com/wanmahadiconsultancy/?hl=en" target="_blank">Instagram</a>
-            <a href="https://www.facebook.com/mahadiomar" target="_blank">Facebook</a>
-            <a href="https://www.linkedin.com/in/wan-mahadi-wan-omar-403bb921/" target="_blank">LinkedIn</a>
-            <a href="https://wa.me/60126560299" target="_blank">WhatsApp Saya</a>
+        <!-- Circular Social Media Row -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/mahadiomar" target="_blank" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/wanmahadiconsultancy/?hl=en" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/wan-mahadi-wan-omar-403bb921/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/60126560299" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
         </div>
     </div>
 
