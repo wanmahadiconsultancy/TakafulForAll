@@ -61,7 +61,7 @@
             display: flex;
             justify-content: center;
             gap: 14px; /* Space between the circles */
-            margin-bottom: 20px; /* Reduced to sit closer to the logo */
+            margin-bottom: 20px; 
         }
         .social-icons a {
             display: flex;
@@ -81,12 +81,12 @@
             background-color: #e4e6eb;
         }
 
-        /* Company Logo styling (Now placed above buttons) */
+        /* Company Logo styling */
         .company-logo {
             width: 130px;
             height: auto;
             display: inline-block;
-            margin: 10px 0 30px 0; /* 10px top gap, 30px bottom gap to buttons */
+            margin: 10px 0 30px 0; 
         }
 
         /* Linktree-style Buttons */
@@ -147,7 +147,7 @@
             text-align: center;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
         .form-group label {
             display: block;
@@ -170,6 +170,33 @@
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: #00AAA5;
         }
+
+        /* Styles for multiple choice checkbox group */
+        .checkbox-group {
+            background-color: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #334155;
+            cursor: pointer;
+            font-weight: normal !important; /* Overrides the main label boldness */
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: auto; /* Overrides 100% width on standard inputs */
+            margin: 0;
+            transform: scale(1.1);
+            accent-color: #00AAA5; /* Gives checkboxes the PruBSN Teal brand color */
+        }
+
         .btn-submit {
             background-color: #00AAA5;
             color: #ffffff;
@@ -215,7 +242,7 @@
             </a>
         </div>
 
-        <!-- NEW PLACEMENT: Company Logo (Sitting nicely between Social Icons and Buttons) -->
+        <!-- Company Logo (Sitting between Social Icons and Buttons) -->
         <img src="logo.jpg" alt="PruBSN Takaful Logo" class="company-logo">
 
         <!-- Action Buttons -->
@@ -234,31 +261,70 @@
             <p>Leave your details below and I'll customize a plan for you.</p>
             
             <form action="https://formspree.io/f/your-form-id" method="POST">
+                
+                <!-- 1. Full Name -->
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="text" id="name" name="name" placeholder="Your Name as per IC" required>
                 </div>
                 
+                <!-- 2. Phone Number (WhatsApp) -->
                 <div class="form-group">
                     <label for="phone">Phone Number (WhatsApp)</label>
                     <input type="tel" id="phone" name="phone" placeholder="e.g. 0123456789" required>
                 </div>
 
+                <!-- 3. Date of Birth -->
                 <div class="form-group">
-                    <label for="plan">Plan of Interest</label>
-                    <select id="plan" name="plan" required>
-                        <option value="" disabled selected>Select a plan...</option>
-                        <option value="Medical Card">Anugerah Plus (Medical Card)</option>
-                        <option value="Hibah Takaful">Warisan Plus (Hibah Takaful)</option>
-                        <option value="Education">PruBSN Aspirasi (Education/Savings)</option>
-                        <option value="Corporate/Group">Corporate / Group Takaful</option>
-                        <option value="Other">General Inquiry</option>
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+
+                <!-- 4. Occupation -->
+                <div class="form-group">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation" placeholder="e.g. Engineer, Business Owner, Teacher" required>
+                </div>
+
+                <!-- 5. Smoking / Vaping Status -->
+                <div class="form-group">
+                    <label for="smoking">Smoking/Vaping Status</label>
+                    <select id="smoking" name="smoking" required>
+                        <option value="" disabled selected>Please select...</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </div>
 
+                <!-- 6. Coverage of Interest (Multiple Choice Checkboxes) -->
+                <div class="form-group">
+                    <label>Coverage of Interest (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Hibah Takaful"> Hibah Takaful
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Medical Card"> Medical Card
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Critical Illness"> Critical Illness
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Education Plan"> Education Plan
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Retirement Plan"> Retirement Plan
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="General Enquiry"> General Enquiry
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Optional Message -->
                 <div class="form-group">
                     <label for="message">Your Message (Optional)</label>
-                    <textarea id="message" name="message" rows="3" placeholder="How can I help you?"></textarea>
+                    <textarea id="message" name="message" rows="3" placeholder="Any specific requirements?"></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Submit Inquiry</button>
