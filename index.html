@@ -36,10 +36,8 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         .profile-img img { width: 100%; height: 100%; object-fit: cover; }
-
-        <img src="images/logo.png" alt="Company Logo" class="company-logo">
         
-        /* Typography styled to match your example image */
+        /* Typography styled to match your branding */
         h1 { 
             font-size: 1.8rem; 
             font-weight: 700; 
@@ -48,10 +46,10 @@
             letter-spacing: -0.5px;
         }
         p { 
-            color: #e51a23; /* Matching the red color from your screenshot */
+            color: #00AAA5; /* Official PruBSN Teal Blue */
             margin-bottom: 30px; 
             font-size: 1.05rem; 
-            font-weight: 600; 
+            font-weight: 700; 
         }
 
         /* Horizontal Social Icon Row */
@@ -79,6 +77,14 @@
             transform: scale(1.08);
             background-color: #e4e6eb;
         }
+
+        /* Company Logo styling */
+        .company-logo {
+            width: 130px; /* Perfect, professional width for the logo */
+            height: auto;
+            margin-top: 35px; /* Generous spacing below the social media circles */
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -89,7 +95,7 @@
         </div>
 
         <h1>Wan Mahadi Wan Omar</h1>
-        <p style="color: #00AAA5; font-weight: bold;">Full-time PruBSN Takaful Consultant</p>
+        <p>Full-time PruBSN Takaful Consultant</p>
 
         <!-- Circular Social Media Row -->
         <div class="social-icons">
@@ -106,6 +112,9 @@
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
+
+        <!-- Company Logo (Placed directly below social buttons) -->
+        <img src="https://www.prubsn.com.my/content/dam/prubsn/en/images/logo/prubsn-logo.svg" alt="PruBSN Takaful Logo" class="company-logo">
     </div>
 
 </body>
