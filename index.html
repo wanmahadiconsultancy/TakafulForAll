@@ -188,13 +188,13 @@
             font-size: 0.95rem;
             color: #334155;
             cursor: pointer;
-            font-weight: normal !important; /* Overrides the main label boldness */
+            font-weight: normal !important;
         }
         .checkbox-label input[type="checkbox"] {
-            width: auto; /* Overrides 100% width on standard inputs */
+            width: auto; 
             margin: 0;
             transform: scale(1.1);
-            accent-color: #00AAA5; /* Gives checkboxes the PruBSN Teal brand color */
+            accent-color: #00AAA5; 
         }
 
         .btn-submit {
@@ -202,12 +202,16 @@
             color: #ffffff;
             border: none;
             width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: 600;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .btn-submit:hover {
             background-color: #008f8a;
@@ -242,7 +246,7 @@
             </a>
         </div>
 
-        <!-- Company Logo (Sitting between Social Icons and Buttons) -->
+        <!-- Company Logo -->
         <img src="logo.jpg" alt="PruBSN Takaful Logo" class="company-logo">
 
         <!-- Action Buttons -->
@@ -255,44 +259,44 @@
             </a>
         </div>
 
-        <!-- Contact/Inquiry Form -->
+        <!-- Contact/Inquiry Form (Submit redirects directly to your WhatsApp) -->
         <div id="takaful-inquiry" class="form-section">
             <h3>PruBSN Takaful Consultation</h3>
-            <p>Leave your details below and I'll customize a plan for you.</p>
+            <p>Leave your details below to instantly generate your quote details.</p>
             
-            <form action="https://formspree.io/f/your-form-id" method="POST">
+            <form id="takafulForm">
                 
                 <!-- 1. Full Name -->
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name as per IC" required>
+                    <input type="text" id="name" placeholder="Your Name as per IC" required>
                 </div>
                 
                 <!-- 2. Phone Number (WhatsApp) -->
                 <div class="form-group">
                     <label for="phone">Phone Number (WhatsApp)</label>
-                    <input type="tel" id="phone" name="phone" placeholder="e.g. 0123456789" required>
+                    <input type="tel" id="phone" placeholder="e.g. 0123456789" required>
                 </div>
 
                 <!-- 3. Date of Birth -->
                 <div class="form-group">
                     <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" name="dob" required>
+                    <input type="date" id="dob" required>
                 </div>
 
                 <!-- 4. Occupation -->
                 <div class="form-group">
                     <label for="occupation">Occupation</label>
-                    <input type="text" id="occupation" name="occupation" placeholder="e.g. Engineer, Business Owner, Teacher" required>
+                    <input type="text" id="occupation" placeholder="e.g. Engineer, Teacher" required>
                 </div>
 
                 <!-- 5. Smoking / Vaping Status -->
                 <div class="form-group">
                     <label for="smoking">Smoking/Vaping Status</label>
-                    <select id="smoking" name="smoking" required>
+                    <select id="smoking" required>
                         <option value="" disabled selected>Please select...</option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
+                        <option value="Yes">Yes, I smoke/vape</option>
+                        <option value="No">No, I do not smoke/vape</option>
                     </select>
                 </div>
 
@@ -324,13 +328,60 @@
                 <!-- Optional Message -->
                 <div class="form-group">
                     <label for="message">Your Message (Optional)</label>
-                    <textarea id="message" name="message" rows="3" placeholder="Any specific requirements?"></textarea>
+                    <textarea id="message" rows="3" placeholder="Any specific requirements?"></textarea>
                 </div>
 
-                <button type="submit" class="btn-submit">Submit Inquiry</button>
+                <button type="submit" class="btn-submit">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
             </form>
         </div>
     </div>
+
+    <!-- JAVASCRIPT FOR WHATSAPP REDIRECTION -->
+    <script>
+        document.getElementById('takafulForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop the standard form reload
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const dob = document.getElementById('dob').value;
+            const occupation = document.getElementById('occupation').value;
+            const smoking = document.getElementById('smoking').value;
+            const optionalMsg = document.getElementById('message').value || "None";
+
+            // Gather all checked boxes
+            const checkedBoxes = document.querySelectorAll('input[name="coverage"]:checked');
+            let coverages = [];
+            checkedBoxes.forEach(function(box) {
+                coverages.push(box.value);
+            });
+            const coverageList = coverages.length > 0 ? coverages.join(', ') : 'General Enquiry';
+
+            // Format the message with neat WhatsApp formatting (using stars for bold)
+            const whatsappMessage = 
+                `Salam Sejahtera Tuan Wan Mahadi,\n\n` +
+                `Saya berminat untuk mendapatkan consultation PruBSN Takaful. Berikut adalah butiran saya:\n\n` +
+                `*Nama penuh:* ${name}\n` +
+                `*No. Telefon:* ${phone}\n` +
+                `*Tarikh Lahir:* ${dob}\n` +
+                `*Pekerjaan:* ${occupation}\n` +
+                `*Status Merokok/Vape:* ${smoking}\n` +
+                `*Perlindungan yang Diminati:* ${coverageList}\n` +
+                `*Mesej Tambahan:* ${optionalMsg}\n\n` +
+                `Mohon bantu saya sediakan sebut harga (quotation) yang sesuai. Terima kasih!`;
+
+            // Encode the text so the browser can read it properly
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+
+            // Redirect to your exact WhatsApp link (with your phone number 60126560299)
+            const whatsappUrl = `https://wa.me/60126560299?text=${encodedMessage}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
 
 </body>
 </html>
