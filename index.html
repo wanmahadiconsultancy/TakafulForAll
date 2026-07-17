@@ -61,7 +61,7 @@
             display: flex;
             justify-content: center;
             gap: 14px; /* Space between the circles */
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* Reduced to sit closer to the logo */
         }
         .social-icons a {
             display: flex;
@@ -81,7 +81,15 @@
             background-color: #e4e6eb;
         }
 
-        /* --- NEW: Linktree-style Buttons --- */
+        /* Company Logo styling (Now placed above buttons) */
+        .company-logo {
+            width: 130px;
+            height: auto;
+            display: inline-block;
+            margin: 10px 0 30px 0; /* 10px top gap, 30px bottom gap to buttons */
+        }
+
+        /* Linktree-style Buttons */
         .action-buttons {
             display: flex;
             flex-direction: column;
@@ -116,15 +124,15 @@
             color: #ffffff;
         }
 
-        /* --- NEW: Contact Form Section --- */
+        /* Contact Form Section */
         .form-section {
             background-color: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 16px;
             padding: 24px;
             text-align: left;
-            margin-bottom: 35px;
-            scroll-margin-top: 20px; /* Gives spacing at the top when scrolling down */
+            margin-bottom: 20px;
+            scroll-margin-top: 20px; 
         }
         .form-section h3 {
             margin: 0 0 8px 0;
@@ -177,13 +185,6 @@
         .btn-submit:hover {
             background-color: #008f8a;
         }
-
-        /* Company Logo styling */
-        .company-logo {
-            width: 130px;
-            height: auto;
-            display: inline-block;
-        }
     </style>
 </head>
 <body>
@@ -214,24 +215,24 @@
             </a>
         </div>
 
-        <!-- NEW: Action Buttons -->
+        <!-- NEW PLACEMENT: Company Logo (Sitting nicely between Social Icons and Buttons) -->
+        <img src="logo.jpg" alt="PruBSN Takaful Logo" class="company-logo">
+
+        <!-- Action Buttons -->
         <div class="action-buttons">
-            <!-- Button 1: Smooth scrolls to the form below -->
             <a href="#takaful-inquiry" class="btn btn-form">
                 <i class="fa-regular fa-file-lines"></i> Request a Takaful Quote
             </a>
-            <!-- Button 2: Opens WhatsApp directly -->
             <a href="https://wa.me/60126560299?text=Hi%20Wan%20Mahadi,%20I%20would%20like%20to%20inquire%20about%20PruBSN%20Takaful." target="_blank" class="btn btn-whatsapp">
                 <i class="fab fa-whatsapp"></i> Chat on WhatsApp
             </a>
         </div>
 
-        <!-- NEW: Contact/Inquiry Form -->
+        <!-- Contact/Inquiry Form -->
         <div id="takaful-inquiry" class="form-section">
             <h3>PruBSN Takaful Consultation</h3>
             <p>Leave your details below and I'll customize a plan for you.</p>
             
-            <!-- Replace the action URL with your own form backend (e.g., Formspree, Web3Forms) -->
             <form action="https://formspree.io/f/your-form-id" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name</label>
@@ -263,9 +264,6 @@
                 <button type="submit" class="btn-submit">Submit Inquiry</button>
             </form>
         </div>
-
-        <!-- Company Logo (At the very bottom) -->
-        <img src="https://www.prubsn.com.my/content/dam/prubsn/en/images/logo/prubsn-logo.svg" alt="PruBSN Takaful Logo" class="company-logo">
     </div>
 
 </body>
