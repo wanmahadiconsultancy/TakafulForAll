@@ -7,6 +7,10 @@
     <!-- This loads the social media icons dynamically -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* Smooth scrolling behavior when clicking anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: #ffffff;
@@ -20,7 +24,7 @@
             width: 90%;
             max-width: 450px;
             text-align: center;
-            padding: 20px;
+            padding: 20px 20px 40px;
         }
         /* Profile Image */
         .profile-img {
@@ -37,7 +41,7 @@
         }
         .profile-img img { width: 100%; height: 100%; object-fit: cover; }
         
-        /* Typography styled to match your branding */
+        /* Typography */
         h1 { 
             font-size: 1.8rem; 
             font-weight: 700; 
@@ -45,9 +49,9 @@
             color: #111; 
             letter-spacing: -0.5px;
         }
-        p { 
+        p.subtitle { 
             color: #00AAA5; /* Official PruBSN Teal Blue */
-            margin-bottom: 30px; 
+            margin-bottom: 25px; 
             font-size: 1.05rem; 
             font-weight: 700; 
         }
@@ -57,6 +61,7 @@
             display: flex;
             justify-content: center;
             gap: 14px; /* Space between the circles */
+            margin-bottom: 30px;
         }
         .social-icons a {
             display: flex;
@@ -64,25 +69,119 @@
             justify-content: center;
             width: 48px;
             height: 48px;
-            background-color: #f0f2f5; /* Light gray circle background */
-            color: #1b1f23; /* Icon color */
-            border-radius: 50%; /* Makes it a perfect circle */
+            background-color: #f0f2f5; 
+            color: #1b1f23; 
+            border-radius: 50%; 
             text-decoration: none;
-            font-size: 1.3rem; /* Icon size */
+            font-size: 1.3rem; 
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
-        
-        /* Subtle pop effect when hovering over the icons */
         .social-icons a:hover {
             transform: scale(1.08);
             background-color: #e4e6eb;
         }
 
+        /* --- NEW: Linktree-style Buttons --- */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+        /* Button 1: Takaful Form (PruBSN Teal) */
+        .btn-form {
+            background-color: #00AAA5;
+            color: #ffffff;
+        }
+        /* Button 2: WhatsApp (WhatsApp Green) */
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #ffffff;
+        }
+
+        /* --- NEW: Contact Form Section --- */
+        .form-section {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            margin-bottom: 35px;
+            scroll-margin-top: 20px; /* Gives spacing at the top when scrolling down */
+        }
+        .form-section h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+            color: #1e293b;
+            text-align: center;
+        }
+        .form-section p {
+            margin: 0 0 20px 0;
+            font-size: 0.85rem;
+            color: #64748b;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #475569;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #00AAA5;
+        }
+        .btn-submit {
+            background-color: #00AAA5;
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #008f8a;
+        }
+
         /* Company Logo styling */
         .company-logo {
-            width: 130px; /* Perfect, professional width for the logo */
+            width: 130px;
             height: auto;
-            margin-top: 35px; /* Generous spacing below the social media circles */
             display: inline-block;
         }
     </style>
@@ -90,12 +189,14 @@
 <body>
 
     <div class="container">
+        <!-- Profile Picture -->
         <div class="profile-img">
             <img src="profile.jpg" alt="Profile">
         </div>
 
+        <!-- Name & Professional Title -->
         <h1>Wan Mahadi Wan Omar</h1>
-        <p>Full-time PruBSN Takaful Consultant</p>
+        <p class="subtitle">Full-time PruBSN Takaful Consultant</p>
 
         <!-- Circular Social Media Row -->
         <div class="social-icons">
@@ -113,7 +214,57 @@
             </a>
         </div>
 
-        <!-- Company Logo (Placed directly below social buttons) -->
+        <!-- NEW: Action Buttons -->
+        <div class="action-buttons">
+            <!-- Button 1: Smooth scrolls to the form below -->
+            <a href="#takaful-inquiry" class="btn btn-form">
+                <i class="fa-regular fa-file-lines"></i> Request a Takaful Quote
+            </a>
+            <!-- Button 2: Opens WhatsApp directly -->
+            <a href="https://wa.me/60126560299?text=Hi%20Wan%20Mahadi,%20I%20would%20like%20to%20inquire%20about%20PruBSN%20Takaful." target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+
+        <!-- NEW: Contact/Inquiry Form -->
+        <div id="takaful-inquiry" class="form-section">
+            <h3>PruBSN Takaful Consultation</h3>
+            <p>Leave your details below and I'll customize a plan for you.</p>
+            
+            <!-- Replace the action URL with your own form backend (e.g., Formspree, Web3Forms) -->
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number (WhatsApp)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="e.g. 0123456789" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="plan">Plan of Interest</label>
+                    <select id="plan" name="plan" required>
+                        <option value="" disabled selected>Select a plan...</option>
+                        <option value="Medical Card">Anugerah Plus (Medical Card)</option>
+                        <option value="Hibah Takaful">Warisan Plus (Hibah Takaful)</option>
+                        <option value="Education">PruBSN Aspirasi (Education/Savings)</option>
+                        <option value="Corporate/Group">Corporate / Group Takaful</option>
+                        <option value="Other">General Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message (Optional)</label>
+                    <textarea id="message" name="message" rows="3" placeholder="How can I help you?"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Inquiry</button>
+            </form>
+        </div>
+
+        <!-- Company Logo (At the very bottom) -->
         <img src="https://www.prubsn.com.my/content/dam/prubsn/en/images/logo/prubsn-logo.svg" alt="PruBSN Takaful Logo" class="company-logo">
     </div>
 
